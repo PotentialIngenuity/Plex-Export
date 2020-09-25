@@ -1,31 +1,59 @@
 /*
 	Plex Export Stylesheet
-	Author: Luke Lanchester <luke@lukelanchester.com>
 */
-* { margin: 0; padding: 0; border: 0; list-style: none; font-weight: normal; }
+* { 
+	margin: 0; 
+	padding: 0; 
+	border: 0; 
+	list-style: none; 
+	font-weight: normal; 
+}
+
 body {
+	width: 100%;
+	margin-top: 95px;
 	font-family: "Arial","Helvetica",sans-serif;
 	font-size: 12px;
 	color: #272B2D;
 	background: #9A9A9A url(../images/background.jpg);
 }
-.left { float: left; }
-.right { float: right; }
-.clear { clear: both; }
-.hide { display: none; }
-#container {
-	width: 920px;
-	padding: 0 20px;
-	margin: 0 auto;
-	background: url(../images/container-bg.png) repeat-y;
+
+/* Create two unequal columns that floats next to each other */
+.column {
+	float: left;
+	padding: 0px;
 }
 
+.row {
+	padding-bottom: 50px;
+}
+  
+.left {
+width: 200px;
+position: fixed;
+padding-left: 20px;
+background-color: #E7EBED;
+}
 
+.right {
+width: calc(100% - 240px);
+padding-left: 240px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+content: "";
+display: table;
+clear: both;
+}
 
 /* HEADER //////////////////////////////////////////////////////////////////////////*/
 
 #header {
 	height: 95px;
+	position: fixed;
+	top: 0;
+	width: 100%;
 	background: #282B2E;
 	border-bottom: 5px solid #FF9421;
 }
@@ -53,21 +81,16 @@ body {
 }
 #header p strong {
 	display: block;
-	margin: -12px -6px 0 0;
-	font-size: 96px;
+	margin: 0 0 0 0;
+	font-size: 72px;
 	color: #3E4146;
 }
 
-
-
 /* SIDEBAR //////////////////////////////////////////////////////////////////////////*/
-
-#toggle_sidebar { display: none; }
-
 #sidebar {
-	float: left;
-	width: 200px;
-	margin-right: 2px;
+	overflow-x: hidden;
+	transition: height 500ms;
+	height: calc(100% - 142px);
 }
 
 .sidebar-section h2 {
@@ -76,7 +99,9 @@ body {
 	padding: 8px 0 0 13px;
 }
 
-.sections-list { margin: 3px 0 14px; }
+.sections-list { 
+	margin: 3px 0 14px; 
+}
 .sections-list li {
 	padding: 6px 16px 6px 43px;
 	background: no-repeat 17px 50%;
@@ -135,14 +160,11 @@ body {
 
 /* MAIN //////////////////////////////////////////////////////////////////////////*/
 
-#main {
-	float: left;
-	width: 718px;
-}
-
 #section-header {
-	padding: 1px 0 1px 1px;
+	padding: 10px 0 1px 1px;
 	border-bottom: 1px solid #C9CACB;
+	position: fixed;
+	width: calc(100% - 240px);
 }
 #section-header div {
 	background: #E7EBED;
@@ -184,12 +206,15 @@ body {
 }
 
 #item-list {
-	width: 700px;
-	margin-left: 11px;
-	margin-top: 20px;
+	margin-left: 10px;
+	margin-top: 80px;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 0;
 }
 .item {
-	float: left;
+	display: inline-block;
+	vertical-align: top;
 	width: 150px;
 	margin: 0 12px 24px;
 	background: #E7EBED;
@@ -197,11 +222,8 @@ body {
 	text-shadow: 1px 1px 2px #BBB;
 	-webkit-border-radius: 8px;
 	-moz-border-radius: 8px;
-	border-radius: 8px;	
-}
-.item:nth-child(4n+1) {
-	clear: left;
-}
+	border-radius: 8px;
+  }
 .item img {
 	-webkit-border-radius: 8px;
 	/*-moz-border-radius: 8px;*/ /* Until Mozilla support clipping content with border-radius this will remain :( */
@@ -406,22 +428,14 @@ body {
 	color: #666;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 /* FOOTER //////////////////////////////////////////////////////////////////////////*/
 
 #footer {
 	clear: both;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100vw;
 	padding: 14px;
 	background: #282B2E;
 	border-top: 5px solid #FF9421;
