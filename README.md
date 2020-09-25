@@ -1,3 +1,5 @@
+![](images/Plex-Export.gif)
+
 ## Summary
 
 Plex Export allows you to produce an HTML page with information on the media contained within your Plex library. This page can then be shared publicly without requiring access to the original Plex server.
