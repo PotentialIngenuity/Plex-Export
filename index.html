@@ -16,6 +16,31 @@
 		PLEX.run();
 	});
 	</script>
+	<script language="javascript">
+		var interval = setInterval(function(){ 
+			$.getJSON('assets/php/mod-time.php', function(data) {
+				if (getCookie('old_modification') != data.filedate) {
+					window.location.reload();
+				};
+
+				setCookie('old_modification', data.filedate);
+			});
+		}, 1*60*1000); //loop every 1 minute(s)
+
+		function setCookie(name, value) {
+			var cookie_string = name + "=" + encodeURI(value) + "; SameSite=Lax"
+			document.cookie = cookie_string;
+		}
+
+		function getCookie(cookie_name) {
+			var results = document.cookie.match('(^|;) ?' + cookie_name + '=([^;]*)(;|$)');
+			return results ? unescape(results[2]) : null;
+		}
+
+		if(getCookie('old_modification') === null) {
+			setCookie('old_modification', 0);
+		}
+	</script>
 </head>
 
 <body>
@@ -88,7 +113,7 @@
 	</div>
 
 	<div id="footer">
-		<p><a href="https://www.plex.tv/">Plex</a> | <a href="https://github.com/Dachande663/Plex-Export">Plex Export | </a><span id="last_updated"></span></p>
+		<p><a href="https://www.plex.tv/">Plex</a> | <a href="https://github.com/blake1029384756/Plex-Export">Plex Export | </a><span id="last_updated"></span></p>
 	</div><!-- end #footer -->
 
 </div><!-- end #container -->
