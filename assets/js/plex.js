@@ -459,7 +459,7 @@ var PLEX = {
 				var media = PLEX.current_item.media;
 				popup_content += '<li><strong>Video:</strong> codec: '+media.video_codec+', framerate: '+media.video_framerate+ ((media.video_resolution != undefined && media.video_resolution>0)?', vert: '+media.video_resolution:'') + ((media.aspect_ratio != undefined && media.aspect_ratio>0)?', aspect ratio: '+media.aspect_ratio:'') +'</li>';
 				popup_content += '<li><strong>Audio:</strong> codec: '+media.audio_codec+', channels: '+media.audio_channels+'</li>';
-				if(media.total_size != false) popup_content += '<li><strong>File:</strong> '+hl_bytes_to_human(media.total_size)+' @ '+media.bitrate+'bps</li>';
+				if(media.total_size != false) popup_content += '<li><strong>File:</strong> '+humanFileSize(media.total_size, false, 2)+' @ '+media.bitrate+'bps</li>';
 			}
 			popup_content += '</ul>';
 		}
